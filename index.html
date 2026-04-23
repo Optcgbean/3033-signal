@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3033.HK Trading Signal — Kimi Claw</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #0a0e1a 0%, #1a1f3a 100%);
+            min-height: 100vh;
+            color: #e2e8f0;
+            padding: 20px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        header {
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 1px solid rgba(96, 165, 250, 0.2);
+            margin-bottom: 30px;
+        }
+        h1 {
+            font-size: 2.2rem;
+            background: linear-gradient(90deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+        .subtitle {
+            color: #94a3b8;
+            font-size: 0.95rem;
+        }
+        .last-updated {
+            color: #64748b;
+            font-size: 0.85rem;
+            margin-top: 8px;
+        }
+
+        /* Signal Banner */
+        .signal-banner {
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+            border: 2px solid;
+            backdrop-filter: blur(10px);
+        }
+        .signal-neutral {
+            background: rgba(148, 163, 184, 0.1);
+            border-color: rgba(148, 163, 184, 0.3);
+        }
+        .signal-buy {
+            background: rgba(34, 197, 94, 0.15);
+            border-color: rgba(34, 197, 94, 0.4);
+        }
+        .signal-sell {
+            background: rgba(239, 68, 68, 0.15);
+            border-color: rgba(239, 68, 68, 0.4);
+        }
+        .signal-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .signal-neutral .signal-label { color: #94a3b8; }
+        .signal-buy .signal-label { color: #22c55e; }
+        .signal-sell .signal-label { color: #ef4444; }
+        .signal-verdict {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        .signal-neutral .signal-verdict { color: #cbd5e1; }
+        .signal-buy .signal-verdict { color: #22c55e; }
+        .signal-sell .signal-verdict { color: #ef4444; }
+        .signal-reason {
+            font-size: 1rem;
+            color: #94a3b8;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Price Card */
+        .price-card {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 25px;
+            border: 1px solid rgba(96, 165, 250, 0.15);
+            margin-bottom: 20px;
+        }
+        .price-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .price-main {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #f8fafc;
+        }
+        .price-change {
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 8px;
+        }
+        .change-up { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
+        .change-down { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
+        .price-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .detail-item {
+            background: rgba(15, 23, 42, 0.5);
+            padding: 12px 16px;
+            border-radius: 8px;
+        }
+        .detail-label {
+            font-size: 0.75rem;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+        .detail-value {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #e2e8f0;
+        }
+
+        /* Grid Layout */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .panel {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 25px;
+            border: 1px solid rgba(96, 165, 250, 0.15);
+        }
+        .panel-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #f8fafc;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(96, 165, 250, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .panel-title .icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+
+        /* Indicator Row */
+        .indicator-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+        }
+        .indicator-row:last-child { border-bottom: none; }
+        .indicator-name {
+            font-size: 0.95rem;
+            color: #cbd5e1;
+        }
+        .indicator-value {
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: 'SF Mono', Monaco, monospace;
+        }
+        .indicator-status {
+            font-size: 0.75rem;
+            padding: 3px 10px;
+            border-radius: 12px;
+            margin-left: 8px;
+        }
+        .status-bullish { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
+        .status-bearish { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
+        .status-neutral { background: rgba(148, 163, 184, 0.2); color: #94a3b8; }
+
+        /* Pivot Levels */
+        .pivot-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .pivot-item {
+            background: rgba(15, 23, 42, 0.5);
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .pivot-label {
+            font-size: 0.7rem;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+        .pivot-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            font-family: 'SF Mono', Monaco, monospace;
+        }
+        .pivot-resist { color: #ef4444; }
+        .pivot-support { color: #22c55e; }
+        .pivot-pivot { color: #60a5fa; }
+
+        /* Signal Logic Table */
+        .logic-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .logic-table th {
+            text-align: left;
+            padding: 12px 10px;
+            font-size: 0.8rem;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid rgba(96, 165, 250, 0.2);
+        }
+        .logic-table td {
+            padding: 14px 10px;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.08);
+            font-size: 0.9rem;
+        }
+        .logic-table tr:last-child td { border-bottom: none; }
+        .check-pass { color: #22c55e; font-weight: 600; }
+        .check-fail { color: #ef4444; font-weight: 600; }
+        .check-na { color: #64748b; }
+
+        /* Risk Panel */
+        .risk-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        .risk-item {
+            background: rgba(15, 23, 42, 0.5);
+            padding: 14px;
+            border-radius: 8px;
+        }
+        .risk-label {
+            font-size: 0.75rem;
+            color: #64748b;
+            margin-bottom: 6px;
+        }
+        .risk-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #e2e8f0;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: #475569;
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(96, 165, 250, 0.1);
+            margin-top: 20px;
+        }
+        footer a {
+            color: #60a5fa;
+            text-decoration: none;
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+            h1 { font-size: 1.6rem; }
+            .price-main { font-size: 2rem; }
+            .signal-verdict { font-size: 1.8rem; }
+            .dashboard-grid { grid-template-columns: 1fr; }
+            .pivot-grid { grid-template-columns: repeat(3, 1fr); }
+            .risk-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>3033.HK Trading Signal</h1>
+            <div class="subtitle">CSOP Hang Seng TECH Index ETF — Daily Short-Term Model</div>
+            <div class="last-updated">Last Updated: April 23, 2026 at 04:12 HKT</div>
+        </header>
+
+        <!-- Signal Banner -->
+        <div class="signal-banner signal-neutral">
+            <div class="signal-label">Current Signal</div>
+            <div class="signal-verdict">NEUTRAL — NO SIGNAL</div>
+            <div class="signal-reason">
+                Both long and short entry conditions remain unsatisfied. MACD hovers near zero line with no confirmed crossover. RSI sits in neutral territory (54–55). Price remains below SMA50 in a downtrend regime with moderate volatility. Await convergence signal development.
+            </div>
+        </div>
+
+        <!-- Price Card -->
+        <div class="price-card">
+            <div class="price-header">
+                <div class="price-main">HK$4.776</div>
+                <div class="price-change change-down">−1.69% (−$0.082)</div>
+            </div>
+            <div class="price-details">
+                <div class="detail-item">
+                    <div class="detail-label">Previous Close</div>
+                    <div class="detail-value">$4.858</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Open</div>
+                    <div class="detail-value">$4.854</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Day Range</div>
+                    <div class="detail-value">$4.744 – $4.858</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">52W Range</div>
+                    <div class="detail-value">$4.514 – $6.595</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Volume</div>
+                    <div class="detail-value">828M</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Avg Volume</div>
+                    <div class="detail-value">1.82B</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">NAV</div>
+                    <div class="detail-value">$4.95</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Discount to NAV</div>
+                    <div class="detail-value">−3.5%</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <!-- Technical Indicators -->
+            <div class="panel">
+                <div class="panel-title">
+                    <div class="icon" style="background: rgba(96,165,250,0.2); color: #60a5fa;">📊</div>
+                    Technical Indicators
+                </div>
+                <div class="indicator-row">
+                    <span class="indicator-name">RSI (14)</span>
+                    <span>
+                        <span class="indicator-value" style="color: #94a3b8;">54.2</span>
+                        <span class="indicator-status status-neutral">Neutral</span>
+                    </span>
+                </div>
+                <div class="indicator-row">
+                    <span class="indicator-name">MACD (12,26,9)</span>
+                    <span>
+                        <span class="indicator-value" style="color: #ef4444;">−0.01</span>
+                        <span class="indicator-status status-bearish">Marginal Bearish</span>
+                    </span>
+                </div>
+                <div class="indicator-row">
+                    <span class="indicator-name">MACD Histogram</span>
+                    <span>
+                        <span class="indicator-value" style="color: #ef4444;">~0.00</span>
+                        <span class="indicator-status status-neutral">No Conviction</span>
+                    </span>
+                </div>
+                <div class="indicator-row">
+                    <span class="indicator-name">SMA50</span>
+                    <span>
+                        <span class="indicator-value" style="color: #f8fafc;">$4.94</span>
+                        <span class="indicator-status status-bearish">Below</span>
+                    </span>
+                </div>
+                <div class="indicator-row">
+                    <span class="indicator-name">ATR% (14-day)</span>
+                    <span>
+                        <span class="indicator-value" style="color: #f59e0b;">1.66%</span>
+                        <span class="indicator-status status-neutral">Moderate-High</span>
+                    </span>
+                </div>
+                <div class="indicator-row">
+                    <span class="indicator-name">Volume vs 20D Avg</span>
+                    <span>
+                        <span class="indicator-value" style="color: #ef4444;">45%</span>
+                        <span class="indicator-status status-bearish">Below Average</span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Pivot Points -->
+            <div class="panel">
+                <div class="panel-title">
+                    <div class="icon" style="background: rgba(168,85,247,0.2); color: #a855f7;">🎯</div>
+                    Pivot Levels (Apr 23)
+                </div>
+                <div class="pivot-grid">
+                    <div class="pivot-item">
+                        <div class="pivot-label">R3</div>
+                        <div class="pivot-value pivot-resist">$5.07</div>
+                    </div>
+                    <div class="pivot-item">
+                        <div class="pivot-label">R2</div>
+                        <div class="pivot-value pivot-resist">$5.03</div>
+                    </div>
+                    <div class="pivot-item">
+                        <div class="pivot-label">R1</div>
+                        <div class="pivot-value pivot-resist">$4.99</div>
+                    </div>
+                    <div class="pivot-item">
+                        <div class="pivot-label">Pivot</div>
+                        <div class="pivot-value pivot-pivot">$4.95</div>
+                    </div>
+                    <div class="pivot-item">
+                        <div class="pivot-label">S1</div>
+                        <div class="pivot-value pivot-support">$4.91</div>
+                    </div>
+                    <div class="pivot-item">
+                        <div class="pivot-label">S2</div>
+                        <div class="pivot-value pivot-support">$4.88</div>
+                    </div>
+                    <div class="pivot-item">
+                        <div class="pivot-label">S3</div>
+                        <div class="pivot-value pivot-support">$4.84</div>
+                    </div>
+                    <div class="pivot-item">
+                        <div class="pivot-label">Vol Sup</div>
+                        <div class="pivot-value pivot-support">$4.76</div>
+                    </div>
+                </div>
+                <div style="margin-top: 15px; font-size: 0.85rem; color: #64748b; text-align: center;">
+                    Price $4.776 is between S2 ($4.88) and S3 ($4.84)
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <!-- Long Signal Logic -->
+            <div class="panel">
+                <div class="panel-title">
+                    <div class="icon" style="background: rgba(34,197,94,0.2); color: #22c55e;">📈</div>
+                    Long Entry Checklist
+                </div>
+                <table class="logic-table">
+                    <tr>
+                        <th>Condition</th>
+                        <th>Required</th>
+                        <th>Current</th>
+                        <th>Status</th>
+                    </tr>
+                    <tr>
+                        <td>MACD Golden Cross</td>
+                        <td>Confirmed, histogram + ≥2 days</td>
+                        <td>MACD −0.01, no crossover</td>
+                        <td class="check-fail">✗ FAIL</td>
+                    </tr>
+                    <tr>
+                        <td>RSI Oversold / Rebound</td>
+                        <td>&lt; 30 or rebounding from &lt; 30</td>
+                        <td>RSI 54.2, neutral zone</td>
+                        <td class="check-fail">✗ FAIL</td>
+                    </tr>
+                    <tr>
+                        <td>Trend / Volatility</td>
+                        <td>Price ≥ SMA50 OR ATR% &lt; median</td>
+                        <td>$4.776 &lt; $4.94, ATR% 1.66%</td>
+                        <td class="check-fail">✗ FAIL</td>
+                    </tr>
+                    <tr>
+                        <td>Support Proximity</td>
+                        <td>Within 1.5% of S1/S2/S3</td>
+                        <td>Near S2 ($4.88) and S3 ($4.84)</td>
+                        <td class="check-pass">✓ PASS</td>
+                    </tr>
+                    <tr>
+                        <td>Volume Confirmation</td>
+                        <td>≥ 80% of 20-day average</td>
+                        <td>45% of average (no signal)</td>
+                        <td class="check-na">— N/A</td>
+                    </tr>
+                </table>
+                <div style="margin-top: 15px; padding: 12px; background: rgba(239,68,68,0.1); border-radius: 8px; text-align: center; font-weight: 600; color: #ef4444;">
+                    VERDICT: NOT SATISFIED (3 of 5 conditions failed)
+                </div>
+            </div>
+
+            <!-- Short Signal Logic -->
+            <div class="panel">
+                <div class="panel-title">
+                    <div class="icon" style="background: rgba(239,68,68,0.2); color: #ef4444;">📉</div>
+                    Short Entry Checklist
+                </div>
+                <table class="logic-table">
+                    <tr>
+                        <th>Condition</th>
+                        <th>Required</th>
+                        <th>Current</th>
+                        <th>Status</th>
+                    </tr>
+                    <tr>
+                        <td>MACD Death Cross</td>
+                        <td>Confirmed, histogram − ≥2 days</td>
+                        <td>Marginal bearish, no histogram</td>
+                        <td class="check-fail">✗ FAIL</td>
+                    </tr>
+                    <tr>
+                        <td>RSI Overbought / Retreat</td>
+                        <td>&gt; 70 or retreating from &gt; 70</td>
+                        <td>RSI 54.2, neutral zone</td>
+                        <td class="check-fail">✗ FAIL</td>
+                    </tr>
+                    <tr>
+                        <td>Trend / Volatility</td>
+                        <td>Price &lt; SMA50 OR ATR% &gt; median</td>
+                        <td>$4.776 &lt; $4.94 (partial)</td>
+                        <td class="check-pass">✓ PASS</td>
+                    </tr>
+                    <tr>
+                        <td>Resistance Proximity</td>
+                        <td>Within 1.5% of R1/R2/R3</td>
+                        <td>R1 $4.99 = 4.5% away</td>
+                        <td class="check-fail">✗ FAIL</td>
+                    </tr>
+                    <tr>
+                        <td>Volume Confirmation</td>
+                        <td>≥ 80% of 20-day average</td>
+                        <td>45% of average (no signal)</td>
+                        <td class="check-na">— N/A</td>
+                    </tr>
+                </table>
+                <div style="margin-top: 15px; padding: 12px; background: rgba(239,68,68,0.1); border-radius: 8px; text-align: center; font-weight: 600; color: #ef4444;">
+                    VERDICT: NOT SATISFIED (3 of 5 conditions failed)
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <!-- Risk Management -->
+            <div class="panel">
+                <div class="panel-title">
+                    <div class="icon" style="background: rgba(245,158,11,0.2); color: #f59e0b;">🛡️</div>
+                    Risk Parameters
+                </div>
+                <div class="risk-grid">
+                    <div class="risk-item">
+                        <div class="risk-label">Volatility Regime</div>
+                        <div class="risk-value" style="color: #f59e0b;">Moderate-High</div>
+                    </div>
+                    <div class="risk-item">
+                        <div class="risk-label">Position Size Modifier</div>
+                        <div class="risk-value">1.0× Base</div>
+                    </div>
+                    <div class="risk-item">
+                        <div class="risk-label">Stop-Loss Width</div>
+                        <div class="risk-value">1.5–2.0× ATR</div>
+                    </div>
+                    <div class="risk-item">
+                        <div class="risk-label">Max Risk Per Trade</div>
+                        <div class="risk-value">1.0% of Equity</div>
+                    </div>
+                    <div class="risk-item">
+                        <div class="risk-label">SMA50 Resistance</div>
+                        <div class="risk-value">$4.94</div>
+                    </div>
+                    <div class="risk-item">
+                        <div class="risk-label">Accumulated Vol Support</div>
+                        <div class="risk-value">$4.76</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Market Regime -->
+            <div class="panel">
+                <div class="panel-title">
+                    <div class="icon" style="background: rgba(6,182,212,0.2); color: #06b6d4;">🌊</div>
+                    Market Regime
+                </div>
+                <div class="indicator-row">
+                    <span class="indicator-name">Trend Direction</span>
+                    <span class="indicator-value" style="color: #ef4444;">Downtrend</span>
+                </div>
+                <div class="indicator-row">
+                    <span class="indicator-name">Volatility Level</span>
+                    <span class="indicator-value" style="color: #f59e0b;">Moderate-High</span>
+                </div>
+                <div class="indicator-row">
+                    <span class="indicator-name">Regime Classification</span>
+                    <span class="indicator-value" style="color: #ef4444;">Downward-HighVol</span>
+                </div>
+                <div class="indicator-row">
+                    <span class="indicator-name">Strategy Bias</span>
+                    <span class="indicator-value" style="color: #94a3b8;">Cautious / Neutral</span>
+                </div>
+                <div class="indicator-row">
+                    <span class="indicator-name">Signal Buffer</span>
+                    <span class="indicator-value" style="color: #f8fafc;">2 Days (Cautious)</span>
+                </div>
+                <div style="margin-top: 15px; padding: 12px; background: rgba(148,163,184,0.1); border-radius: 8px; font-size: 0.85rem; color: #94a3b8; line-height: 1.6;">
+                    <strong style="color: #f8fafc;">Regime Notes:</strong><br>
+                    Downward-HighVol is the most defensive regime. Both long and short signals face elevated risk. Position sizing compresses to 50% if signals emerge. Prefer cash position and await volatility normalization or trend reversal confirmation.
+                </div>
+            </div>
+        </div>
+
+        <!-- Strategy Notes -->
+        <div class="panel" style="margin-bottom: 20px;">
+            <div class="panel-title">
+                <div class="icon" style="background: rgba(236,72,153,0.2); color: #ec4899;">📝</div>
+                Model Notes
+            </div>
+            <div style="font-size: 0.9rem; color: #94a3b8; line-height: 1.7;">
+                <p style="margin-bottom: 12px;"><strong style="color: #f8fafc;">Current Assessment:</strong> 3033.HK is trading in a consolidation zone near 52-week lows with no clear directional momentum. MACD hovers at the zero line with minimal histogram conviction, indicating a balance between buyers and sellers. RSI in neutral territory confirms the absence of oversold or overbought extremes. Volume at 45% of average indicates diminished participation, often preceding a directional resolution.</p>
+                <p style="margin-bottom: 12px;"><strong style="color: #f8fafc;">Watch List:</strong> Monitor for MACD crossover development and RSI approach toward 30 (buy watch) or 70 (sell watch). Key level to watch is SMA50 at $4.94 — a sustained break above this level with volume would signal potential trend reversal to uptrend. Support cluster at $4.76 (accumulated volume) represents the critical downside floor.</p>
+                <p><strong style="color: #f8fafc;">Signal Buffer:</strong> Any convergence signal that develops will be subject to a 2-day validation period given the cautious regime classification. No execution authorized until signal persists through the buffer and volume normalizes above 80% of average.</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>3033.HK Daily Short-Term Trading Model — Based on White Paper v1.0</p>
+            <p style="margin-top: 6px;">Data sourced from Yahoo Finance, TipRanks, StockInvest.us | SGD/HKD rate: 5.8</p>
+            <p style="margin-top: 6px;">Generated by Kimi Claw | <a href="https://github.com/optcgbean">GitHub</a></p>
+        </footer>
+    </div>
+</body>
+</html>
