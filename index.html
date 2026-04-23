@@ -27,17 +27,9 @@
             -webkit-text-fill-color: transparent;
             margin-bottom: 8px;
         }
-        .subtitle {
-            color: #94a3b8;
-            font-size: 0.95rem;
-        }
-        .last-updated {
-            color: #64748b;
-            font-size: 0.85rem;
-            margin-top: 8px;
-        }
+        .subtitle { color: #94a3b8; font-size: 0.95rem; }
+        .last-updated { color: #64748b; font-size: 0.85rem; margin-top: 8px; }
 
-        /* Signal Banner */
         .signal-banner {
             border-radius: 16px;
             padding: 30px;
@@ -46,18 +38,9 @@
             border: 2px solid;
             backdrop-filter: blur(10px);
         }
-        .signal-neutral {
-            background: rgba(148, 163, 184, 0.1);
-            border-color: rgba(148, 163, 184, 0.3);
-        }
-        .signal-buy {
-            background: rgba(34, 197, 94, 0.15);
-            border-color: rgba(34, 197, 94, 0.4);
-        }
-        .signal-sell {
-            background: rgba(239, 68, 68, 0.15);
-            border-color: rgba(239, 68, 68, 0.4);
-        }
+        .signal-neutral { background: rgba(148, 163, 184, 0.1); border-color: rgba(148, 163, 184, 0.3); }
+        .signal-buy { background: rgba(34, 197, 94, 0.15); border-color: rgba(34, 197, 94, 0.4); }
+        .signal-sell { background: rgba(239, 68, 68, 0.15); border-color: rgba(239, 68, 68, 0.4); }
         .signal-label {
             font-size: 0.9rem;
             text-transform: uppercase;
@@ -84,7 +67,6 @@
             line-height: 1.6;
         }
 
-        /* Price Card */
         .price-card {
             background: rgba(30, 41, 59, 0.6);
             backdrop-filter: blur(10px);
@@ -100,11 +82,7 @@
             flex-wrap: wrap;
             gap: 15px;
         }
-        .price-main {
-            font-size: 2.8rem;
-            font-weight: 700;
-            color: #f8fafc;
-        }
+        .price-main { font-size: 2.8rem; font-weight: 700; color: #f8fafc; }
         .price-change {
             font-size: 1.2rem;
             font-weight: 600;
@@ -131,13 +109,8 @@
             letter-spacing: 0.5px;
             margin-bottom: 4px;
         }
-        .detail-value {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #e2e8f0;
-        }
+        .detail-value { font-size: 1rem; font-weight: 600; color: #e2e8f0; }
 
-        /* Grid Layout */
         .dashboard-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -163,8 +136,7 @@
             gap: 10px;
         }
         .panel-title .icon {
-            width: 28px;
-            height: 28px;
+            width: 28px; height: 28px;
             border-radius: 6px;
             display: flex;
             align-items: center;
@@ -172,7 +144,6 @@
             font-size: 0.9rem;
         }
 
-        /* Indicator Row */
         .indicator-row {
             display: flex;
             justify-content: space-between;
@@ -181,10 +152,7 @@
             border-bottom: 1px solid rgba(148, 163, 184, 0.1);
         }
         .indicator-row:last-child { border-bottom: none; }
-        .indicator-name {
-            font-size: 0.95rem;
-            color: #cbd5e1;
-        }
+        .indicator-name { font-size: 0.95rem; color: #cbd5e1; }
         .indicator-value {
             font-size: 1rem;
             font-weight: 600;
@@ -200,7 +168,6 @@
         .status-bearish { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
         .status-neutral { background: rgba(148, 163, 184, 0.2); color: #94a3b8; }
 
-        /* Pivot Levels */
         .pivot-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -229,7 +196,6 @@
         .pivot-support { color: #22c55e; }
         .pivot-pivot { color: #60a5fa; }
 
-        /* Signal Logic Table */
         .logic-table {
             width: 100%;
             border-collapse: collapse;
@@ -253,7 +219,6 @@
         .check-fail { color: #ef4444; font-weight: 600; }
         .check-na { color: #64748b; }
 
-        /* Risk Panel */
         .risk-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -269,13 +234,8 @@
             color: #64748b;
             margin-bottom: 6px;
         }
-        .risk-value {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #e2e8f0;
-        }
+        .risk-value { font-size: 1.1rem; font-weight: 600; color: #e2e8f0; }
 
-        /* Footer */
         footer {
             text-align: center;
             padding: 30px 0;
@@ -284,12 +244,8 @@
             border-top: 1px solid rgba(96, 165, 250, 0.1);
             margin-top: 20px;
         }
-        footer a {
-            color: #60a5fa;
-            text-decoration: none;
-        }
+        footer a { color: #60a5fa; text-decoration: none; }
 
-        /* Mobile */
         @media (max-width: 600px) {
             h1 { font-size: 1.6rem; }
             .price-main { font-size: 2rem; }
@@ -305,23 +261,19 @@
         <header>
             <h1>3033.HK Trading Signal</h1>
             <div class="subtitle">CSOP Hang Seng TECH Index ETF — Daily Short-Term Model</div>
-            <div class="last-updated">Last Updated: April 23, 2026 at 04:12 HKT</div>
+            <div class="last-updated">Last Updated: April 23, 2026 at 15:36 HKT</div>
         </header>
 
-        <!-- Signal Banner -->
         <div class="signal-banner signal-neutral">
             <div class="signal-label">Current Signal</div>
             <div class="signal-verdict">NEUTRAL — NO SIGNAL</div>
-            <div class="signal-reason">
-                Both long and short entry conditions remain unsatisfied. MACD hovers near zero line with no confirmed crossover. RSI sits in neutral territory (54–55). Price remains below SMA50 in a downtrend regime with moderate volatility. Await convergence signal development.
-            </div>
+            <div class="signal-reason">Neither long (1/5) nor short (1/5) entry conditions are fully satisfied. Await convergence signal development.</div>
         </div>
 
-        <!-- Price Card -->
         <div class="price-card">
             <div class="price-header">
                 <div class="price-main">HK$4.776</div>
-                <div class="price-change change-down">−1.69% (−$0.082)</div>
+                <div class="price-change change-down">-0.082 (-1.69%)</div>
             </div>
             <div class="price-details">
                 <div class="detail-item">
@@ -346,7 +298,7 @@
                 </div>
                 <div class="detail-item">
                     <div class="detail-label">Avg Volume</div>
-                    <div class="detail-value">1.82B</div>
+                    <div class="detail-value">1822M</div>
                 </div>
                 <div class="detail-item">
                     <div class="detail-label">NAV</div>
@@ -354,13 +306,12 @@
                 </div>
                 <div class="detail-item">
                     <div class="detail-label">Discount to NAV</div>
-                    <div class="detail-value">−3.5%</div>
+                    <div class="detail-value">-3.5%</div>
                 </div>
             </div>
         </div>
 
         <div class="dashboard-grid">
-            <!-- Technical Indicators -->
             <div class="panel">
                 <div class="panel-title">
                     <div class="icon" style="background: rgba(96,165,250,0.2); color: #60a5fa;">📊</div>
@@ -376,15 +327,15 @@
                 <div class="indicator-row">
                     <span class="indicator-name">MACD (12,26,9)</span>
                     <span>
-                        <span class="indicator-value" style="color: #ef4444;">−0.01</span>
-                        <span class="indicator-status status-bearish">Marginal Bearish</span>
+                        <span class="indicator-value" style="color: #ef4444">-0.01</span>
+                        <span class="indicator-status status-bearish">Bearish</span>
                     </span>
                 </div>
                 <div class="indicator-row">
                     <span class="indicator-name">MACD Histogram</span>
                     <span>
-                        <span class="indicator-value" style="color: #ef4444;">~0.00</span>
-                        <span class="indicator-status status-neutral">No Conviction</span>
+                        <span class="indicator-value" style="color: #94a3b8">+0.00</span>
+                        <span class="indicator-status status-neutral">Flat</span>
                     </span>
                 </div>
                 <div class="indicator-row">
@@ -397,167 +348,133 @@
                 <div class="indicator-row">
                     <span class="indicator-name">ATR% (14-day)</span>
                     <span>
-                        <span class="indicator-value" style="color: #f59e0b;">1.66%</span>
-                        <span class="indicator-status status-neutral">Moderate-High</span>
+                        <span class="indicator-value" style="color: #f59e0b">1.66%</span>
+                        <span class="indicator-status status-neutral">Moderate</span>
                     </span>
                 </div>
                 <div class="indicator-row">
                     <span class="indicator-name">Volume vs 20D Avg</span>
                     <span>
-                        <span class="indicator-value" style="color: #ef4444;">45%</span>
-                        <span class="indicator-status status-bearish">Below Average</span>
+                        <span class="indicator-value" style="color: #ef4444">45%</span>
+                        <span class="indicator-status status-bearish">Below Avg</span>
                     </span>
                 </div>
             </div>
 
-            <!-- Pivot Points -->
             <div class="panel">
                 <div class="panel-title">
                     <div class="icon" style="background: rgba(168,85,247,0.2); color: #a855f7;">🎯</div>
-                    Pivot Levels (Apr 23)
+                    Pivot Levels
                 </div>
                 <div class="pivot-grid">
-                    <div class="pivot-item">
-                        <div class="pivot-label">R3</div>
-                        <div class="pivot-value pivot-resist">$5.07</div>
-                    </div>
-                    <div class="pivot-item">
-                        <div class="pivot-label">R2</div>
-                        <div class="pivot-value pivot-resist">$5.03</div>
-                    </div>
-                    <div class="pivot-item">
-                        <div class="pivot-label">R1</div>
-                        <div class="pivot-value pivot-resist">$4.99</div>
-                    </div>
-                    <div class="pivot-item">
-                        <div class="pivot-label">Pivot</div>
-                        <div class="pivot-value pivot-pivot">$4.95</div>
-                    </div>
-                    <div class="pivot-item">
-                        <div class="pivot-label">S1</div>
-                        <div class="pivot-value pivot-support">$4.91</div>
-                    </div>
-                    <div class="pivot-item">
-                        <div class="pivot-label">S2</div>
-                        <div class="pivot-value pivot-support">$4.88</div>
-                    </div>
-                    <div class="pivot-item">
-                        <div class="pivot-label">S3</div>
-                        <div class="pivot-value pivot-support">$4.84</div>
-                    </div>
-                    <div class="pivot-item">
-                        <div class="pivot-label">Vol Sup</div>
-                        <div class="pivot-value pivot-support">$4.76</div>
-                    </div>
+                    <div class="pivot-item"><div class="pivot-label">R3</div><div class="pivot-value pivot-resist">$5.07</div></div>
+                    <div class="pivot-item"><div class="pivot-label">R2</div><div class="pivot-value pivot-resist">$5.03</div></div>
+                    <div class="pivot-item"><div class="pivot-label">R1</div><div class="pivot-value pivot-resist">$4.99</div></div>
+                    <div class="pivot-item"><div class="pivot-label">Pivot</div><div class="pivot-value pivot-pivot">$4.95</div></div>
+                    <div class="pivot-item"><div class="pivot-label">S1</div><div class="pivot-value pivot-support">$4.91</div></div>
+                    <div class="pivot-item"><div class="pivot-label">S2</div><div class="pivot-value pivot-support">$4.88</div></div>
+                    <div class="pivot-item"><div class="pivot-label">S3</div><div class="pivot-value pivot-support">$4.84</div></div>
+                    <div class="pivot-item"><div class="pivot-label">Vol Sup</div><div class="pivot-value pivot-support">$4.76</div></div>
                 </div>
                 <div style="margin-top: 15px; font-size: 0.85rem; color: #64748b; text-align: center;">
-                    Price $4.776 is between S2 ($4.88) and S3 ($4.84)
+                    Price $4.776 is below S3
                 </div>
             </div>
         </div>
 
         <div class="dashboard-grid">
-            <!-- Long Signal Logic -->
             <div class="panel">
                 <div class="panel-title">
                     <div class="icon" style="background: rgba(34,197,94,0.2); color: #22c55e;">📈</div>
                     Long Entry Checklist
                 </div>
                 <table class="logic-table">
-                    <tr>
-                        <th>Condition</th>
-                        <th>Required</th>
-                        <th>Current</th>
-                        <th>Status</th>
-                    </tr>
+                    <tr><th>Condition</th><th>Required</th><th>Current</th><th>Status</th></tr>
                     <tr>
                         <td>MACD Golden Cross</td>
                         <td>Confirmed, histogram + ≥2 days</td>
-                        <td>MACD −0.01, no crossover</td>
+                        <td>MACD -0.01, hist +0.00</td>
                         <td class="check-fail">✗ FAIL</td>
                     </tr>
                     <tr>
                         <td>RSI Oversold / Rebound</td>
                         <td>&lt; 30 or rebounding from &lt; 30</td>
-                        <td>RSI 54.2, neutral zone</td>
+                        <td>RSI 54.2</td>
                         <td class="check-fail">✗ FAIL</td>
                     </tr>
                     <tr>
                         <td>Trend / Volatility</td>
                         <td>Price ≥ SMA50 OR ATR% &lt; median</td>
-                        <td>$4.776 &lt; $4.94, ATR% 1.66%</td>
+                        <td>$4.776 vs $4.94, ATR% 1.66%</td>
                         <td class="check-fail">✗ FAIL</td>
                     </tr>
                     <tr>
                         <td>Support Proximity</td>
                         <td>Within 1.5% of S1/S2/S3</td>
-                        <td>Near S2 ($4.88) and S3 ($4.84)</td>
+                        <td>Near support</td>
                         <td class="check-pass">✓ PASS</td>
                     </tr>
                     <tr>
                         <td>Volume Confirmation</td>
                         <td>≥ 80% of 20-day average</td>
-                        <td>45% of average (no signal)</td>
+                        <td>45% of average</td>
                         <td class="check-na">— N/A</td>
                     </tr>
                 </table>
-                <div style="margin-top: 15px; padding: 12px; background: rgba(239,68,68,0.1); border-radius: 8px; text-align: center; font-weight: 600; color: #ef4444;">
-                    VERDICT: NOT SATISFIED (3 of 5 conditions failed)
+                <div style="margin-top: 15px; padding: 12px; border-radius: 8px; text-align: center; font-weight: 600;
+                    background: rgba(239,68,68,0.1);
+                    color: #ef4444;">
+                    VERDICT: NOT SATISFIED (1/5 conditions passed)
                 </div>
             </div>
 
-            <!-- Short Signal Logic -->
             <div class="panel">
                 <div class="panel-title">
                     <div class="icon" style="background: rgba(239,68,68,0.2); color: #ef4444;">📉</div>
                     Short Entry Checklist
                 </div>
                 <table class="logic-table">
-                    <tr>
-                        <th>Condition</th>
-                        <th>Required</th>
-                        <th>Current</th>
-                        <th>Status</th>
-                    </tr>
+                    <tr><th>Condition</th><th>Required</th><th>Current</th><th>Status</th></tr>
                     <tr>
                         <td>MACD Death Cross</td>
                         <td>Confirmed, histogram − ≥2 days</td>
-                        <td>Marginal bearish, no histogram</td>
+                        <td>MACD -0.01, hist +0.00</td>
                         <td class="check-fail">✗ FAIL</td>
                     </tr>
                     <tr>
                         <td>RSI Overbought / Retreat</td>
                         <td>&gt; 70 or retreating from &gt; 70</td>
-                        <td>RSI 54.2, neutral zone</td>
+                        <td>RSI 54.2</td>
                         <td class="check-fail">✗ FAIL</td>
                     </tr>
                     <tr>
                         <td>Trend / Volatility</td>
                         <td>Price &lt; SMA50 OR ATR% &gt; median</td>
-                        <td>$4.776 &lt; $4.94 (partial)</td>
+                        <td>$4.776 vs $4.94, ATR% 1.66%</td>
                         <td class="check-pass">✓ PASS</td>
                     </tr>
                     <tr>
                         <td>Resistance Proximity</td>
                         <td>Within 1.5% of R1/R2/R3</td>
-                        <td>R1 $4.99 = 4.5% away</td>
+                        <td>Not near resistance</td>
                         <td class="check-fail">✗ FAIL</td>
                     </tr>
                     <tr>
                         <td>Volume Confirmation</td>
                         <td>≥ 80% of 20-day average</td>
-                        <td>45% of average (no signal)</td>
+                        <td>45% of average</td>
                         <td class="check-na">— N/A</td>
                     </tr>
                 </table>
-                <div style="margin-top: 15px; padding: 12px; background: rgba(239,68,68,0.1); border-radius: 8px; text-align: center; font-weight: 600; color: #ef4444;">
-                    VERDICT: NOT SATISFIED (3 of 5 conditions failed)
+                <div style="margin-top: 15px; padding: 12px; border-radius: 8px; text-align: center; font-weight: 600;
+                    background: rgba(239,68,68,0.1);
+                    color: #ef4444;">
+                    VERDICT: NOT SATISFIED (1/5 conditions passed)
                 </div>
             </div>
         </div>
 
         <div class="dashboard-grid">
-            <!-- Risk Management -->
             <div class="panel">
                 <div class="panel-title">
                     <div class="icon" style="background: rgba(245,158,11,0.2); color: #f59e0b;">🛡️</div>
@@ -566,7 +483,7 @@
                 <div class="risk-grid">
                     <div class="risk-item">
                         <div class="risk-label">Volatility Regime</div>
-                        <div class="risk-value" style="color: #f59e0b;">Moderate-High</div>
+                        <div class="risk-value" style="color: #f59e0b;">Moderate</div>
                     </div>
                     <div class="risk-item">
                         <div class="risk-label">Position Size Modifier</div>
@@ -574,7 +491,7 @@
                     </div>
                     <div class="risk-item">
                         <div class="risk-label">Stop-Loss Width</div>
-                        <div class="risk-value">1.5–2.0× ATR</div>
+                        <div class="risk-value">1.5-2.0× ATR</div>
                     </div>
                     <div class="risk-item">
                         <div class="risk-label">Max Risk Per Trade</div>
@@ -591,7 +508,6 @@
                 </div>
             </div>
 
-            <!-- Market Regime -->
             <div class="panel">
                 <div class="panel-title">
                     <div class="icon" style="background: rgba(6,182,212,0.2); color: #06b6d4;">🌊</div>
@@ -603,44 +519,43 @@
                 </div>
                 <div class="indicator-row">
                     <span class="indicator-name">Volatility Level</span>
-                    <span class="indicator-value" style="color: #f59e0b;">Moderate-High</span>
+                    <span class="indicator-value" style="color: #f59e0b;">Moderate</span>
                 </div>
                 <div class="indicator-row">
                     <span class="indicator-name">Regime Classification</span>
-                    <span class="indicator-value" style="color: #ef4444;">Downward-HighVol</span>
+                    <span class="indicator-value" style="color: #f59e0b">
+                        Downward-LowVol
+                    </span>
                 </div>
                 <div class="indicator-row">
                     <span class="indicator-name">Strategy Bias</span>
-                    <span class="indicator-value" style="color: #94a3b8;">Cautious / Neutral</span>
+                    <span class="indicator-value" style="color: #94a3b8;">
+                        Favorable Short
+                    </span>
                 </div>
                 <div class="indicator-row">
                     <span class="indicator-name">Signal Buffer</span>
                     <span class="indicator-value" style="color: #f8fafc;">2 Days (Cautious)</span>
                 </div>
-                <div style="margin-top: 15px; padding: 12px; background: rgba(148,163,184,0.1); border-radius: 8px; font-size: 0.85rem; color: #94a3b8; line-height: 1.6;">
-                    <strong style="color: #f8fafc;">Regime Notes:</strong><br>
-                    Downward-HighVol is the most defensive regime. Both long and short signals face elevated risk. Position sizing compresses to 50% if signals emerge. Prefer cash position and await volatility normalization or trend reversal confirmation.
-                </div>
             </div>
         </div>
 
-        <!-- Strategy Notes -->
         <div class="panel" style="margin-bottom: 20px;">
             <div class="panel-title">
                 <div class="icon" style="background: rgba(236,72,153,0.2); color: #ec4899;">📝</div>
                 Model Notes
             </div>
             <div style="font-size: 0.9rem; color: #94a3b8; line-height: 1.7;">
-                <p style="margin-bottom: 12px;"><strong style="color: #f8fafc;">Current Assessment:</strong> 3033.HK is trading in a consolidation zone near 52-week lows with no clear directional momentum. MACD hovers at the zero line with minimal histogram conviction, indicating a balance between buyers and sellers. RSI in neutral territory confirms the absence of oversold or overbought extremes. Volume at 45% of average indicates diminished participation, often preceding a directional resolution.</p>
-                <p style="margin-bottom: 12px;"><strong style="color: #f8fafc;">Watch List:</strong> Monitor for MACD crossover development and RSI approach toward 30 (buy watch) or 70 (sell watch). Key level to watch is SMA50 at $4.94 — a sustained break above this level with volume would signal potential trend reversal to uptrend. Support cluster at $4.76 (accumulated volume) represents the critical downside floor.</p>
-                <p><strong style="color: #f8fafc;">Signal Buffer:</strong> Any convergence signal that develops will be subject to a 2-day validation period given the cautious regime classification. No execution authorized until signal persists through the buffer and volume normalizes above 80% of average.</p>
+                <p style="margin-bottom: 12px;"><strong style="color: #f8fafc;">Signal Logic:</strong> This model implements a convergence-based trading system for 3033.HK requiring dual-indicator confirmation. A valid buy signal needs MACD golden cross + RSI oversold/rebound + trend/volatility alignment + support proximity + volume confirmation. A valid sell signal needs MACD death cross + RSI overbought/retreat + trend/volatility alignment + resistance proximity + volume confirmation. The signal buffer protocol requires 1-2 days of validation before execution.</p>
+                <p style="margin-bottom: 12px;"><strong style="color: #f8fafc;">Dynamic Thresholds:</strong> When ATR% exceeds the 90th percentile for 3 consecutive sessions, RSI thresholds widen from 70/30 to 75/25 to reduce false signals in high-volatility regimes. Normalization requires 5 consecutive sessions below the 75th percentile to revert.</p>
+                <p><strong style="color: #f8fafc;">Disclaimer:</strong> This dashboard is for informational and educational purposes only. It does not constitute investment advice. Trading involves substantial risk of loss. Past performance does not guarantee future results. Always conduct your own research and consult a qualified financial advisor before making investment decisions.</p>
             </div>
         </div>
 
         <footer>
             <p>3033.HK Daily Short-Term Trading Model — Based on White Paper v1.0</p>
-            <p style="margin-top: 6px;">Data sourced from Yahoo Finance, TipRanks, StockInvest.us | SGD/HKD rate: 5.8</p>
-            <p style="margin-top: 6px;">Generated by Kimi Claw | <a href="https://github.com/optcgbean">GitHub</a></p>
+            <p style="margin-top: 6px;">Data sourced from Yahoo Finance | Technical indicators from Investing.com, TipRanks, StockInvest.us</p>
+            <p style="margin-top: 6px;">Generated by Kimi Claw | <a href="https://github.com/Optcgbean/3033-signal">GitHub</a></p>
         </footer>
     </div>
 </body>
