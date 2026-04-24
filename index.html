@@ -30,6 +30,30 @@
         .subtitle { color: #94a3b8; font-size: 0.95rem; }
         .last-updated { color: #64748b; font-size: 0.85rem; margin-top: 8px; }
 
+        /* Health indicator */
+        .health-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            padding: 12px;
+            background: rgba(15, 23, 42, 0.6);
+            border-radius: 8px;
+            border: 1px solid rgba(96, 165, 250, 0.1);
+        }
+        .health-indicator {
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+        .health-ok { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
+        .health-warn { background: rgba(245, 158, 11, 0.2); color: #f59e0b; }
+        .health-error { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
+        .data-source { font-size: 0.8rem; color: #64748b; }
+        .next-run { font-size: 0.8rem; color: #64748b; }
+
         .signal-banner {
             border-radius: 16px;
             padding: 30px;
@@ -253,6 +277,7 @@
             .dashboard-grid { grid-template-columns: 1fr; }
             .pivot-grid { grid-template-columns: repeat(3, 1fr); }
             .risk-grid { grid-template-columns: 1fr; }
+            .health-bar { flex-direction: column; gap: 8px; }
         }
     </style>
 </head>
@@ -261,32 +286,38 @@
         <header>
             <h1>3033.HK Trading Signal</h1>
             <div class="subtitle">CSOP Hang Seng TECH Index ETF — Daily Short-Term Model</div>
-            <div class="last-updated">Last Updated: April 24, 2026 at 07:00 HKT</div>
+            <div class="last-updated">Last Updated: April 24, 2026 at 15:43 HKT</div>
         </header>
+
+        <div class="health-bar">
+            <span class="health-indicator health-ok">● System Healthy</span>
+            <span class="data-source">Data: <span style="color: #22c55e;">Live data (Yahoo Finance, attempt 1)</span></span>
+            <span class="next-run">Next Run: April 27 07:00 HKT</span>
+        </div>
 
         <div class="signal-banner signal-neutral">
             <div class="signal-label">Current Signal</div>
             <div class="signal-verdict">NEUTRAL — NO SIGNAL</div>
-            <div class="signal-reason">Neither long (1/5) nor short (1/5) entry conditions are fully satisfied. Await convergence signal development.</div>
+            <div class="signal-reason">Neither long (1/5) nor short (0/5) entry conditions are fully satisfied. Await convergence signal development.</div>
         </div>
 
         <div class="price-card">
             <div class="price-header">
-                <div class="price-main">HK$4.776</div>
-                <div class="price-change change-down">-0.082 (-1.69%)</div>
+                <div class="price-main">HK$66.780</div>
+                <div class="price-change change-up">+1.510 (+2.31%)</div>
             </div>
             <div class="price-details">
                 <div class="detail-item">
                     <div class="detail-label">Previous Close</div>
-                    <div class="detail-value">$4.858</div>
+                    <div class="detail-value">$66.780</div>
                 </div>
                 <div class="detail-item">
                     <div class="detail-label">Open</div>
-                    <div class="detail-value">$4.854</div>
+                    <div class="detail-value">$66.780</div>
                 </div>
                 <div class="detail-item">
                     <div class="detail-label">Day Range</div>
-                    <div class="detail-value">$4.744 – $4.858</div>
+                    <div class="detail-value">$66.780 – $66.780</div>
                 </div>
                 <div class="detail-item">
                     <div class="detail-label">52W Range</div>
@@ -294,7 +325,7 @@
                 </div>
                 <div class="detail-item">
                     <div class="detail-label">Volume</div>
-                    <div class="detail-value">828M</div>
+                    <div class="detail-value">N/A</div>
                 </div>
                 <div class="detail-item">
                     <div class="detail-label">Avg Volume</div>
@@ -306,7 +337,7 @@
                 </div>
                 <div class="detail-item">
                     <div class="detail-label">Discount to NAV</div>
-                    <div class="detail-value">-3.5%</div>
+                    <div class="detail-value">1249.1%</div>
                 </div>
             </div>
         </div>
@@ -341,8 +372,8 @@
                 <div class="indicator-row">
                     <span class="indicator-name">SMA50</span>
                     <span>
-                        <span class="indicator-value" style="color: #f8fafc;">$4.94</span>
-                        <span class="indicator-status status-bearish">Below</span>
+                        <span class="indicator-value" style="color: #f8fafc;">4.94</span>
+                        <span class="indicator-status status-bullish">Above</span>
                     </span>
                 </div>
                 <div class="indicator-row">
@@ -355,7 +386,7 @@
                 <div class="indicator-row">
                     <span class="indicator-name">Volume vs 20D Avg</span>
                     <span>
-                        <span class="indicator-value" style="color: #ef4444">45%</span>
+                        <span class="indicator-value" style="color: #ef4444">0%</span>
                         <span class="indicator-status status-bearish">Below Avg</span>
                     </span>
                 </div>
@@ -377,7 +408,7 @@
                     <div class="pivot-item"><div class="pivot-label">Vol Sup</div><div class="pivot-value pivot-support">$4.76</div></div>
                 </div>
                 <div style="margin-top: 15px; font-size: 0.85rem; color: #64748b; text-align: center;">
-                    Price $4.776 is below S3
+                    Price $66.780 is above R3
                 </div>
             </div>
         </div>
@@ -405,19 +436,19 @@
                     <tr>
                         <td>Trend / Volatility</td>
                         <td>Price ≥ SMA50 OR ATR% &lt; median</td>
-                        <td>$4.776 vs $4.94, ATR% 1.66%</td>
-                        <td class="check-fail">✗ FAIL</td>
+                        <td>$66.780 vs $4.94, ATR% 1.66%</td>
+                        <td class="check-pass">✓ PASS</td>
                     </tr>
                     <tr>
                         <td>Support Proximity</td>
                         <td>Within 1.5% of S1/S2/S3</td>
-                        <td>Near support</td>
-                        <td class="check-pass">✓ PASS</td>
+                        <td>Not near support</td>
+                        <td class="check-fail">✗ FAIL</td>
                     </tr>
                     <tr>
                         <td>Volume Confirmation</td>
                         <td>≥ 80% of 20-day average</td>
-                        <td>45% of average</td>
+                        <td>0% of average</td>
                         <td class="check-na">— N/A</td>
                     </tr>
                 </table>
@@ -450,8 +481,8 @@
                     <tr>
                         <td>Trend / Volatility</td>
                         <td>Price &lt; SMA50 OR ATR% &gt; median</td>
-                        <td>$4.776 vs $4.94, ATR% 1.66%</td>
-                        <td class="check-pass">✓ PASS</td>
+                        <td>$66.780 vs $4.94, ATR% 1.66%</td>
+                        <td class="check-fail">✗ FAIL</td>
                     </tr>
                     <tr>
                         <td>Resistance Proximity</td>
@@ -462,14 +493,14 @@
                     <tr>
                         <td>Volume Confirmation</td>
                         <td>≥ 80% of 20-day average</td>
-                        <td>45% of average</td>
+                        <td>0% of average</td>
                         <td class="check-na">— N/A</td>
                     </tr>
                 </table>
                 <div style="margin-top: 15px; padding: 12px; border-radius: 8px; text-align: center; font-weight: 600;
                     background: rgba(239,68,68,0.1);
                     color: #ef4444;">
-                    VERDICT: NOT SATISFIED (1/5 conditions passed)
+                    VERDICT: NOT SATISFIED (0/5 conditions passed)
                 </div>
             </div>
         </div>
@@ -499,11 +530,11 @@
                     </div>
                     <div class="risk-item">
                         <div class="risk-label">SMA50 Resistance</div>
-                        <div class="risk-value">$4.94</div>
+                        <div class="risk-value">4.94</div>
                     </div>
                     <div class="risk-item">
                         <div class="risk-label">Accumulated Vol Support</div>
-                        <div class="risk-value">$4.76</div>
+                        <div class="risk-value">4.76</div>
                     </div>
                 </div>
             </div>
@@ -515,7 +546,7 @@
                 </div>
                 <div class="indicator-row">
                     <span class="indicator-name">Trend Direction</span>
-                    <span class="indicator-value" style="color: #ef4444;">Downtrend</span>
+                    <span class="indicator-value" style="color: #22c55e;">Uptrend</span>
                 </div>
                 <div class="indicator-row">
                     <span class="indicator-name">Volatility Level</span>
@@ -524,13 +555,13 @@
                 <div class="indicator-row">
                     <span class="indicator-name">Regime Classification</span>
                     <span class="indicator-value" style="color: #f59e0b">
-                        Downward-LowVol
+                        Upward-HighVol
                     </span>
                 </div>
                 <div class="indicator-row">
                     <span class="indicator-name">Strategy Bias</span>
                     <span class="indicator-value" style="color: #94a3b8;">
-                        Favorable Short
+                        Cautious Long
                     </span>
                 </div>
                 <div class="indicator-row">
@@ -554,8 +585,8 @@
 
         <footer>
             <p>3033.HK Daily Short-Term Trading Model — Based on White Paper v1.0</p>
-            <p style="margin-top: 6px;">Data sourced from Yahoo Finance | Technical indicators from Investing.com, TipRanks, StockInvest.us</p>
-            <p style="margin-top: 6px;">Generated by Kimi Claw | <a href="https://github.com/Optcgbean/3033-signal">GitHub</a></p>
+            <p style="margin-top: 6px;">Data sourced from Yahoo Finance / Investing.com | Technical indicators from Investing.com, TipRanks, StockInvest.us</p>
+            <p style="margin-top: 6px;">Auto-updated weekdays 07:00 HKT | Generated by Kimi Claw | <a href="https://github.com/Optcgbean/3033-signal">GitHub</a></p>
         </footer>
     </div>
 </body>
